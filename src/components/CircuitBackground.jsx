@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import bgCircuit from "../assets/bg-circuit.png"; // <-- FIXED PATH
 
 export default function CircuitBackground() {
   const canvasRef = useRef(null);
@@ -9,13 +8,12 @@ export default function CircuitBackground() {
     const ctx = canvas.getContext("2d");
 
     const img = new Image();
-    img.src = bgCircuit; // <-- FIX HERE
+    img.src = import.meta.env.BASE_URL + "bg-circuit.png"; // <-- FIXED
 
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-
     window.addEventListener("resize", resize);
     resize();
 

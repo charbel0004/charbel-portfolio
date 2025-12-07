@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import bgCircuit from "../assets/bg-circuit.png"; // <-- FIXED PATH
 
 export default function CircuitBackground() {
   const canvasRef = useRef(null);
@@ -8,7 +9,7 @@ export default function CircuitBackground() {
     const ctx = canvas.getContext("2d");
 
     const img = new Image();
-    img.src = "/bg-circuit.png";
+    img.src = bgCircuit; // <-- FIX HERE
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -24,7 +25,7 @@ export default function CircuitBackground() {
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw background motherboard image
+        // motherboard background
         ctx.globalAlpha = 0.25;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
@@ -41,7 +42,7 @@ export default function CircuitBackground() {
         ctx.fill();
         ctx.filter = "none";
 
-        // Electric line flow animation (scanlight highlight)
+        // line glow animation
         ctx.globalAlpha = 0.25;
         ctx.globalCompositeOperation = "lighter";
         ctx.filter = "blur(2px)";

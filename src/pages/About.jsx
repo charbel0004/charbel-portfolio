@@ -1,68 +1,91 @@
+import RadialTimeline from "../components/RadialTimeline.jsx";
+
 export default function About() {
   return (
-    <section className="space-y-6">
+    <section className="space-y-16">
+
+      {/* HEADER */}
       <header>
-        <h1 className="text-2xl font-semibold text-white mb-2">About</h1>
+        <h1 className="text-2xl font-semibold text-white mb-2">About Me</h1>
         <p className="text-sm text-slate-400">
-          A bit about my background, experience, and what I enjoy building.
+          A look into my background, technical journey, and what drives my work.
         </p>
       </header>
 
-      <div className="grid md:grid-cols-[2fr,1.2fr] gap-8">
-        <div className="space-y-4 text-sm text-slate-200">
+      {/* MAIN GRID */}
+      <div className="grid md:grid-cols-[2fr,1.2fr] gap-10">
+        
+        {/* BIO */}
+        <div className="space-y-4 text-sm text-slate-200 leading-relaxed">
           <p>
             I’m an IT Application Developer at{" "}
             <span className="font-medium text-sky-300">
               Saint George University of Beirut (SGUB)
             </span>
-            , working within the Information and Communication Technology Office.
+            , building systems that support academic operations and 
+            digital transformation across the university.
           </p>
+
           <p>
-            My work focuses on building secure, maintainable systems: admission
-            platforms, academic workflows, scoring dashboards, document
-            management, and integrations with university infrastructure. I’m
-            comfortable owning an application from database design to frontend
-            UX and deployment.
+            My engineering work spans full-stack development, backend APIs,
+            database modeling, automation, cloud deployment, and AI-driven tools.
+            I focus on creating systems that are efficient, secure, and scalable.
           </p>
+
           <p>
-            On the AI side, I’ve been exploring trading algorithms,
-            data-driven decision systems, and medical imaging models, blending
-            practical software engineering with applied machine learning.
+            I explore applied machine learning including trading models,
+            prediction systems, and medical imaging — merging practical software
+            engineering with intelligent automation.
           </p>
+
           <p>
-            Outside of work, I enjoy learning, tinkering with new tools, and
-            contributing to projects that make processes smoother for teams and
-            students.
+            Outside work, I enjoy researching new technologies, refining user
+            experiences, and contributing to impactful projects.
           </p>
         </div>
 
-        <div className="rounded-2xl bg-surface border border-slate-800/80 p-5 text-sm text-slate-200">
-          <h2 className="text-sm font-semibold text-white mb-3">
-            Skills Snapshot
-          </h2>
-          <div className="space-y-3 text-xs">
+        {/* SKILLS */}
+        <div className="rounded-2xl bg-surface border border-slate-800/80 p-6 shadow-soft">
+          <h2 className="text-sm font-semibold text-white mb-4">Skills Snapshot</h2>
+
+          <div className="space-y-4 text-xs">
             <div>
-              <p className="text-slate-400 mb-1">Backend & APIs</p>
-              <p>ASP.NET Core, C#, Node.js, Express</p>
+              <p className="text-slate-400 mb-1">Backend & API Development</p>
+              <p className="text-slate-200">
+                ASP.NET Core · C# · EF · Node.js · Express
+              </p>
             </div>
             <div>
-              <p className="text-slate-400 mb-1">Data & Databases</p>
-              <p>SQL Server, Entity Framework, MongoDB, Stored Procedures</p>
+              <p className="text-slate-400 mb-1">Databases & Modeling</p>
+              <p className="text-slate-200">
+                SQL Server · Stored Procs · MongoDB · Optimization
+              </p>
             </div>
             <div>
               <p className="text-slate-400 mb-1">Frontend</p>
-              <p>React, TypeScript (optional), Tailwind, Razor Views</p>
+              <p className="text-slate-200">
+                React · JavaScript/TS · Tailwind · Razor Views
+              </p>
             </div>
             <div>
-              <p className="text-slate-400 mb-1">AI & Analytics</p>
-              <p>Python, Pandas, Scikit-learn, TensorFlow/PyTorch basics</p>
+              <p className="text-slate-400 mb-1">AI & ML</p>
+              <p className="text-slate-200">
+                Python · Pandas · Scikit-learn · TensorFlow/PyTorch basics
+              </p>
             </div>
             <div>
-              <p className="text-slate-400 mb-1">DevOps & Cloud</p>
-              <p>AWS (EC2, S3, CloudFront), IIS, Docker basics</p>
+              <p className="text-slate-400 mb-1">Cloud & DevOps</p>
+              <p className="text-slate-200">
+                AWS · IIS · GitHub Actions · Docker (Basics)
+              </p>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* TIMELINE */}
+      <div className="flex justify-center -mt-6">
+        <RadialTimeline />
       </div>
     </section>
   );

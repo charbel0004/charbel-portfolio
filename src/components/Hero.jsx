@@ -1,72 +1,91 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="grid md:grid-cols-[2fr,1.4fr] gap-10 items-center">
+    <section className="relative grid md:grid-cols-[2fr,1.3fr] gap-12 items-center">
 
       {/* LEFT SIDE */}
-      <div>
-        {/* Logo */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* Subtle glowing logo */}
         <img
           src="/logo.png"
           alt="CN Logo"
-          className="w-20 h-20 mb-6 opacity-90 drop-shadow-[0_0_12px_rgba(0,255,255,0.4)]"
+          className="w-20 h-20 mb-6 opacity-90 drop-shadow-[0_0_20px_rgba(0,255,255,0.45)]"
         />
 
-        <p className="text-xs uppercase tracking-[0.25em] text-blue-400 mb-4">
-          IT · AI · Cloud · Backend
+        {/* Tagline */}
+        <p className="text-xs uppercase tracking-[0.25em] text-cyan-300 mb-4">
+          IT • AI • Cloud • Backend
         </p>
 
-        <h1 className="text-4xl sm:text-5xl font-semibold text-white mb-4 leading-tight">
-          Building intelligent,
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-400">
+        {/* Title */}
+        <h1 className="text-4xl sm:text-5xl font-semibold text-white mb-5 leading-tight">
+          Engineering intelligent,
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400">
             production-grade systems.
           </span>
         </h1>
 
         <p className="text-sm sm:text-base text-slate-300 max-w-xl mb-6">
-          I’m an IT Application Developer at Saint George University of Beirut,
-          crafting end-to-end solutions – from ASP.NET & SQL Server backends, to
-          modern frontends, AI-powered services, and cloud deployments.
+          IT Application Developer at Saint George University of Beirut.
+          I build scalable APIs, cloud deployments, secure platforms, and
+          AI-driven applications—from concept to production.
         </p>
 
+        {/* Buttons */}
         <div className="flex flex-wrap gap-3">
           <Link
             to="/projects"
-            className="px-5 py-2.5 text-sm rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-soft transition"
+            className="px-5 py-2.5 text-sm rounded-full bg-blue-600 hover:bg-blue-500 
+                     shadow-[0_0_15px_rgba(0,150,255,0.4)] transition text-white"
           >
             View Projects
           </Link>
+
           <Link
             to="/contact"
-            className="px-5 py-2.5 text-sm rounded-full border border-slate-700 text-slate-200 hover:border-blue-500 hover:text-blue-200 transition"
+            className="px-5 py-2.5 text-sm rounded-full border border-cyan-400/40 
+                       text-cyan-200 hover:border-cyan-300 hover:text-cyan-100 transition"
           >
             Contact Me
           </Link>
         </div>
-      </div>
+      </motion.div>
 
-      {/* RIGHT SIDE */}
-      <div className="relative">
-        {/* Glow behind the card */}
-        <div className="absolute -inset-6 bg-gradient-to-tr from-blue-500/10 via-indigo-500/10 to-cyan-400/5 blur-3xl" />
+      {/* RIGHT SIDE CARD */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="relative"
+      >
+        {/* Glow behind card */}
+        <div className="absolute -inset-6 bg-gradient-to-tr from-cyan-500/10 
+                        via-indigo-500/10 to-blue-400/5 blur-3xl" />
 
         {/* Card */}
-        <div className="relative rounded-3xl bg-surface border border-slate-800/80 p-6 shadow-soft">
+        <div className="relative rounded-3xl bg-[#0b0f17]/80 border border-slate-800/80 p-6 shadow-xl">
           <div className="text-xs font-semibold text-slate-400 mb-4">
             Current Focus
           </div>
+
           <ul className="space-y-3 text-sm text-slate-200">
-            <li>• SGUB Admissions & PGME Application Systems</li>
-            <li>• UNISHELF e-commerce platform for construction materials</li>
-            <li>• AI-powered trading & medical imaging models</li>
-            <li>• Cloud hosting, CI/CD, and automation</li>
+            <li>• PGME & Undergraduate Admissions Systems (SGUB)</li>
+            <li>• UNISHELF E-Commerce Platform</li>
+            <li>• AI Models: Trading, Skin-Cancer Imaging</li>
+            <li>• Cloud Deployments, CI/CD, Automation</li>
           </ul>
-          <div className="mt-6 text-[11px] text-slate-500 border-t border-slate-800 pt-3">
+
+          <div className="mt-6 text-[12px] text-slate-300 border-t border-slate-700 pt-3">
             Available for collaborations & consulting.
           </div>
         </div>
-      </div>
+      </motion.div>
 
     </section>
   );

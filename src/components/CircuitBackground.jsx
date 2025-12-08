@@ -8,7 +8,7 @@ export default function CircuitBackground() {
     const ctx = canvas.getContext("2d");
 
     const img = new Image();
-    img.src = import.meta.env.BASE_URL + "bg-circuit.png"; // <-- FIXED
+    img.src = import.meta.env.BASE_URL + "bg-circuit.png";
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -23,9 +23,27 @@ export default function CircuitBackground() {
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // motherboard background
+        // ---- FIXED RESPONSIVE BACKGROUND ----
         ctx.globalAlpha = 0.25;
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        const imgRatio = img.width / img.height;
+        const canvasRatio = canvas.width / canvas.height;
+
+        let drawWidth, drawHeight, drawX, drawY;
+
+        if (canvasRatio > imgRatio) {
+          drawWidth = canvas.width;
+          drawHeight = canvas.width / imgRatio;
+          drawX = 0;
+          drawY = (canvas.height - drawHeight) / 2;
+        } else {
+          drawHeight = canvas.height;
+          drawWidth = canvas.height * imgRatio;
+          drawX = (canvas.width - drawWidth) / 2;
+          drawY = 0;
+        }
+
+        ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
 
         // CPU pulse
         const pulse = Math.sin(time / 20) * 20 + 40;

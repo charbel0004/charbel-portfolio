@@ -40,6 +40,16 @@ const projects = [
     stack: ["Python", "TensorFlow/PyTorch", "HDF5", "NumPy"],
     highlight: "Focus on early detection and decision support for clinicians.",
   },
+  {
+  title: "Presentations Evaluation & Topic Wheel System",
+  type: "Web App · Internal Tool",
+  description:
+    "Interactive platform for evaluating presentations and randomly assigning topics to new recruits using a dynamic spinning wheel, with tracking and assignment control.",
+  stack: ["Node.js", "Express", "MongoDB", "React", "JWT"],
+  highlight:
+    "Automates fair topic distribution and structured evaluation for recruitment presentations.",
+},
+
 ];
 
 export default projects;

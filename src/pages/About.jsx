@@ -2,91 +2,82 @@ import RadialTimeline from "../components/RadialTimeline.jsx";
 
 export default function About() {
   return (
-    <section className="space-y-16">
+    <section className="space-y-20 relative z-10">
 
       {/* HEADER */}
-      <header>
-        <h1 className="text-2xl font-semibold text-white mb-2">About Me</h1>
+      <header className="pt-4">
+        <h1 className="text-3xl font-semibold text-white mb-2">About Me</h1>
         <p className="text-sm text-slate-400">
-          A look into my background, technical journey, and what drives my work.
+          A look into my background, journey, and the work that drives me.
         </p>
       </header>
 
       {/* MAIN GRID */}
-      <div className="grid md:grid-cols-[2fr,1.2fr] gap-10">
-        
-        {/* BIO */}
-        <div className="space-y-4 text-sm text-slate-200 leading-relaxed">
-          <p>
-            I’m an IT Application Developer at{" "}
-            <span className="font-medium text-sky-300">
-              Saint George University of Beirut (SGUB)
-            </span>
-            , building systems that support academic operations and 
-            digital transformation across the university.
-          </p>
+     <div className="space-y-5 text-sm text-slate-200 leading-relaxed">
+  <p>
+    I’m an IT Application Developer at{" "}
+    <span className="text-sky-300 font-medium">
+      Saint George University of Beirut (SGUB)
+    </span>
+    , where I design and deliver production-grade platforms that support the
+    university’s digital transformation. My work focuses on building secure,
+    scalable systems that streamline admissions and academic workflows end-to-end
+    — from applicant-facing portals to internal scoring, evaluation, and decision
+    dashboards.
+  </p>
 
-          <p>
-            My engineering work spans full-stack development, backend APIs,
-            database modeling, automation, cloud deployment, and AI-driven tools.
-            I focus on creating systems that are efficient, secure, and scalable.
-          </p>
+  <p>
+    On the engineering side, I work across the full stack. I build ASP.NET Core
+    applications and APIs, implement role-based access control, and integrate
+    database-heavy business logic using SQL Server, Entity Framework, and stored
+    procedures. Many of the systems I maintain involve complex rules and
+    high-stakes data integrity (status transitions, scoring logic, audit-safe
+    operations), so I prioritize clean architecture, clear validation flows, and
+    predictable behavior under real usage.
+  </p>
 
-          <p>
-            I explore applied machine learning including trading models,
-            prediction systems, and medical imaging — merging practical software
-            engineering with intelligent automation.
-          </p>
+  <p>
+    A major part of my day-to-day is building workflow automation around
+    documents and application steps: multi-stage forms, autosave drafts, dynamic
+    validations, uploads, and administrative tools to review, score, and track
+    candidates efficiently. I’ve also deployed and supported production
+    environments (including IIS and cloud storage setups) and handled practical
+    issues that appear only at scale — permissions, environment differences,
+    and reliability across deployments.
+  </p>
 
-          <p>
-            Outside work, I enjoy researching new technologies, refining user
-            experiences, and contributing to impactful projects.
-          </p>
-        </div>
+  <p>
+    Beyond enterprise systems, I enjoy building tools that solve real operational
+    problems. That includes internal platforms for structured evaluation and
+    coordination (like presentation evaluation and topic assignment systems),
+    as well as side projects that sharpen my engineering range across Node.js,
+    MongoDB, and modern front-end patterns.
+  </p>
 
-        {/* SKILLS */}
-        <div className="rounded-2xl bg-surface border border-slate-800/80 p-6 shadow-soft">
-          <h2 className="text-sm font-semibold text-white mb-4">Skills Snapshot</h2>
+  <p>
+    I also explore applied machine learning, especially where engineering and
+    decision support intersect. My projects include algorithmic trading
+    experimentation (feature engineering, model training, risk controls, and
+    dashboarding) and medical imaging classification work focused on practical
+    deployment contexts like telehealth. I’m particularly interested in building
+    AI systems that are understandable, testable, and useful in real workflows
+    — not just in notebooks.
+  </p>
 
-          <div className="space-y-4 text-xs">
-            <div>
-              <p className="text-slate-400 mb-1">Backend & API Development</p>
-              <p className="text-slate-200">
-                ASP.NET Core · C# · EF · Node.js · Express
-              </p>
-            </div>
-            <div>
-              <p className="text-slate-400 mb-1">Databases & Modeling</p>
-              <p className="text-slate-200">
-                SQL Server · Stored Procs · MongoDB · Optimization
-              </p>
-            </div>
-            <div>
-              <p className="text-slate-400 mb-1">Frontend</p>
-              <p className="text-slate-200">
-                React · JavaScript/TS · Tailwind · Razor Views
-              </p>
-            </div>
-            <div>
-              <p className="text-slate-400 mb-1">AI & ML</p>
-              <p className="text-slate-200">
-                Python · Pandas · Scikit-learn · TensorFlow/PyTorch basics
-              </p>
-            </div>
-            <div>
-              <p className="text-slate-400 mb-1">Cloud & DevOps</p>
-              <p className="text-slate-200">
-                AWS · IIS · GitHub Actions · Docker (Basics)
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <p>
+    Overall, I care about building software that teams can trust: maintainable
+    codebases, efficient database design, clear UX, and tooling that reduces
+    friction for users. Whether I’m working on admissions platforms, evaluation
+    systems, or AI-assisted utilities, the goal is the same — ship reliable
+    systems that make processes faster, cleaner, and easier to operate.
+  </p>
+</div>
 
-      {/* TIMELINE */}
-      <div className="flex justify-center -mt-6">
+      {/* TIMELINE – NOW WITH PROPER SPACING */}
+      <div className="flex justify-center mt-20 sm:mt-24">
         <RadialTimeline />
       </div>
+
     </section>
   );
 }

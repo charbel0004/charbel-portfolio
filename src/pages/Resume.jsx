@@ -44,6 +44,7 @@ const experience = [
 const selectedWork = [
   "SGUB Undergraduate Admissions Platform: production admissions workflows, document handling, role-based review, and operational decision support.",
   "PGME Residency and Fellowship Applications: multi-step application system with heavier validation, SQL-backed processing, and reviewer coordination.",
+  "Applicant Scoring System: admissions-linked scoring module connected to the main admissions website, with structured reviewer evaluation, score visibility, and production support responsibilities including DevOps-oriented release handling.",
   "Lebanese Red Cross Youth Hub: internal coordination platform with role-based workflows, topic distribution, and operational ownership.",
   "UNISHELF Commerce Experience: structured catalog and media-heavy commercial platform with AWS-backed delivery.",
 ];
@@ -60,6 +61,7 @@ const skills = [
   "IIS",
   "AWS S3",
   "CloudFront",
+  "DevOps",
   "MongoDB",
   "Python",
   "Git",

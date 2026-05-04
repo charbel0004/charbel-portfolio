@@ -96,6 +96,32 @@ const projects = [
     ],
   },
   {
+    title: "Applicant Scoring System",
+    slug: "applicant-scoring-system",
+    client: "Saint George University of Beirut",
+    type: "Evaluation Workflow System",
+    category: "Higher Education",
+    period: "2025 - Present",
+    status: "In Use",
+    featured: false,
+    summary:
+      "Admissions-linked scoring module integrated with the SGUB admissions workflow to standardize reviewer evaluation, centralize score visibility, and support more consistent applicant decision-making.",
+    stack: ["ASP.NET Core", "SQL Server", "Entity Framework", "JavaScript", "IIS", "DevOps"],
+    attention:
+      "Applicant scoring module connected to the admissions website, built to standardize reviewer input, centralize score visibility, and support cleaner decision-making across the broader admissions flow.",
+    scope: [
+      "Built structured reviewer-facing and admin-facing scoring interfaces inside the wider admissions ecosystem rather than as a standalone tool.",
+      "Connected applicant records from the admissions website to evaluation workflows so teams could move from submission review into scoring with clearer context.",
+      "Implemented scoring rules, score visibility, and workflow handling to reduce fragmented manual evaluation across admissions teams.",
+      "Supported deployment and environment-level reliability work around release flow, production fixes, and operational stability.",
+    ],
+    outcomes: [
+      "Improved consistency in how applicants are evaluated across reviewers.",
+      "Gave admissions teams clearer visibility into scoring results during decision support workflows.",
+      "Strengthened reliability by supporting the DevOps side of release and production handling around the admissions platform.",
+    ],
+  },
+  {
     title: "Lebanese Red Cross Youth Hub",
     slug: "lebanese-red-cross-youth-hub",
     client: "Lebanese Red Cross Youth Sector",

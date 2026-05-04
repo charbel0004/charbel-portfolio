@@ -4,6 +4,7 @@ import { useState } from "react";
 const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
+  { to: "/resume", label: "Resume" },
   { to: "/projects", label: "Projects" },
   { to: "/contact", label: "Contact" },
 ];
@@ -12,51 +13,42 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-40 bg-black/30 backdrop-blur-md border-b border-white/10">
-      <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
-
-        {/* Logo + Name */}
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-[#201a16]/10 bg-[#f4efe7]/80 backdrop-blur-xl">
+      <nav className="mx-auto flex h-16 w-full max-w-[1380px] items-center justify-between px-4 sm:px-6 lg:px-10">
         <Link to="/" className="flex items-center gap-3">
-          
-          {/* CN Logo */}
           <img
-            src="/logo.png"
-            alt="CN Logo"
-            className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.45)]"
+            src="/logo-mark.png"
+            alt="Charbel Nasr logo"
+            className="h-11 w-11 rounded-[1rem] border border-[#201a16]/10 object-contain shadow-[0_18px_40px_rgba(15,23,42,0.12)]"
           />
 
-          {/* Name & Title */}
           <div className="flex flex-col leading-tight">
-            <span className="text-sm font-semibold text-white">
-              Charbel Nasr
-            </span>
-            <span className="text-[11px] text-slate-400">
-              IT Application Developer · SGUB
+            <span className="text-sm font-semibold text-slate-950">Charbel Nasr</span>
+            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+              Application Developer
             </span>
           </div>
-
         </Link>
 
-        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-slate-200"
-          onClick={() => setOpen((o) => !o)}
+          className="rounded-full border border-[#201a16]/10 px-3 py-1 text-slate-700 md:hidden"
+          onClick={() => setOpen((value) => !value)}
+          type="button"
         >
           <span className="sr-only">Toggle menu</span>
-          ☰
+          Menu
         </button>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-6 text-sm">
+        <div className="hidden items-center gap-2 rounded-full border border-[#201a16]/10 bg-white/80 p-1 shadow-[0_16px_40px_rgba(15,23,42,0.06)] md:flex">
           {links.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `transition-colors ${
+                `rounded-full px-4 py-2 text-sm transition ${
                   isActive
-                    ? "text-white border-b border-blue-500 pb-1"
-                    : "text-slate-300 hover:text-white"
+                    ? "bg-[#111827] text-[#f8f4ee]"
+                    : "text-slate-600 hover:bg-[#111827]/5 hover:text-slate-950"
                 }`
               }
             >
@@ -66,20 +58,19 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Dropdown */}
       {open && (
-        <div className="md:hidden border-t border-white/10 bg-black/40 backdrop-blur">
-          <div className="max-w-6xl mx-auto px-4 py-3 space-y-2 text-sm">
+        <div className="border-t border-[#201a16]/10 bg-[#f8f4ee] md:hidden">
+          <div className="mx-auto w-full max-w-[1380px] space-y-2 px-4 py-3 text-sm sm:px-6">
             {links.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `block py-1 ${
+                  `block rounded-xl px-3 py-2 ${
                     isActive
-                      ? "text-white font-medium"
-                      : "text-slate-300 hover:text-white"
+                      ? "bg-[#111827] text-[#f8f4ee]"
+                      : "text-slate-700 hover:bg-[#111827]/5 hover:text-slate-950"
                   }`
                 }
               >

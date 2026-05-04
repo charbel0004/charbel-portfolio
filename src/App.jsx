@@ -1,23 +1,23 @@
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import CircuitBackground from "./components/CircuitBackground.jsx";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function App({ children }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
   return (
-    <div className="relative min-h-screen flex flex-col ">
+    <div className="relative flex min-h-screen flex-col overflow-x-clip">
+      <CircuitBackground />
 
-      {/* Motherboard background */}
-      
-        <CircuitBackground />
-      
-
-      {/* Soft dark overlay (allows glow to pass through) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#03050a]/75 via-[#050816]/65 to-[#020617]/75 -z-20"></div>
-
-      {/* Page content */}
       <Navbar />
 
-      <main className="relative z-10 flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      <main className="relative z-10 mx-auto w-full max-w-[1380px] flex-1 px-4 pb-20 pt-24 sm:px-6 lg:px-10">
         {children}
       </main>
 

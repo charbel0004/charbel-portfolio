@@ -1,211 +1,101 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+
+const milestones = [
+  {
+    year: "2023",
+    title: "Early Product Exposure",
+    desc: "Moved from support and implementation exposure into environments where real users and real operations shaped the work.",
+  },
+  {
+    year: "2024",
+    title: "SGUB Production Delivery",
+    desc: "Started owning production admissions and academic workflows at Saint George University of Beirut.",
+  },
+  {
+    year: "2025",
+    title: "Broader Delivery Range",
+    desc: "Expanded into PGME systems, Lebanese Red Cross delivery, public web work, and internal operations tooling.",
+  },
+  {
+    year: "2026",
+    title: "Sharper Personal Brand",
+    desc: "Expanded the presentation of production work, institutional delivery, and project documentation across the work history.",
+  },
+];
 
 export default function RadialTimeline() {
   const containerRef = useRef(null);
-  const milestones = [
-    {
-      year: "2023",
-      title: "Started IT & AI Focus",
-      desc: "Specialized in backend systems, AI models, and cloud technology.",
-    },
-    {
-      year: "2024",
-      title: "SGUB Admissions System",
-      desc: "Developed scalable workflows for university admissions.",
-    },
-    {
-      year: "2025",
-      title: "PGME Platform & UNISHELF",
-      desc: "Delivered full-stack systems, automation, and CI/CD pipelines.",
-    },
-    {
-      year: "2026",
-      title: "AI Projects & Cloud Engineering",
-      desc: "Building trading models, imaging tools, and cloud architectures.",
-    },
-  ];
 
-  /* --- SCROLL TRIGGER ANIMATION --- */
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+    const element = containerRef.current;
+    if (!element) return undefined;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) el.classList.add("tl-visible");
+        if (entry.isIntersecting) {
+          element.classList.add("tl-visible");
+        }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
-    observer.observe(el);
+
+    observer.observe(element);
+
     return () => observer.disconnect();
   }, []);
 
   return (
     <section
       ref={containerRef}
-      className="py-20 sm:py-28 flex flex-col items-center tl-hidden"
+      className="tl-hidden w-full rounded-[2rem] border border-[#201a16]/10 bg-[#111827] px-6 py-12 sm:px-8"
     >
-      <h2 className="text-xl sm:text-2xl font-semibold text-white mb-14 text-center">
-        Journey & Growth
-      </h2>
-      <div className="relative flex items-center justify-center radial-container tl-scale">
-        {/* OUTER RING */}
-        <div
-          className="
-            radial-ring absolute rounded-full border border-cyan-400/40
-            shadow-[0_0_25px_rgba(0,255,255,0.25)]
-            animate-[pulseGlow_6s_ease-in-out_infinite]
-          "
-        />
-        {/* ORBIT DOT */}
-        <div
-          className="
-            orbit-dot absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-cyan-400 rounded-full
-            shadow-[0_0_15px_rgba(0,255,255,0.8)]
-            w-3 h-3 sm:w-4 sm:h-4
-          "
-        />
-        {/* MILESTONES */}
-        {milestones.map((m, i) => {
-          const rad = (i / milestones.length) * 2 * Math.PI;
-          const deg = (rad * 180) / Math.PI;
-          return (
-            <div key={i}>
-              {/* CONNECTOR */}
-              <div
-                className="connector absolute origin-left"
-                style={{
-                  "--angle": `${deg}deg`,
-                }}
-              />
-              {/* MILESTONE ITEM */}
-              <div
-                className="
-                  milestone absolute left-1/2 top-1/2 text-center opacity-0 tl-item
-                  w-24 sm:w-32
-                "
-                style={{ 
-                  "--pos-transform": `translate(-50%, -50%) rotate(${deg}deg) translateX(var(--r)) rotate(${-deg}deg)` 
-                }}
-              >
-                <div
-                  className="
-                    w-2 h-2 sm:w-3 sm:h-3 mx-auto mb-1 rounded-full bg-cyan-400
-                    shadow-[0_0_10px_rgba(0,255,255,0.8)]
-                    animate-[dotPulse_2.5s_ease-in-out_infinite]
-                  "
-                />
-                <div className="text-cyan-300 text-xs sm:text-sm font-semibold">
-                  {m.year}
-                </div>
-                <div className="text-sky-200 text-[10px] sm:text-sm font-semibold mt-1">
-                  {m.title}
-                </div>
-                <p className="text-slate-300 text-[9px] sm:text-xs mt-1 leading-snug">
-                  {m.desc}
-                </p>
-              </div>
+      <div className="mx-auto max-w-6xl">
+        <p className="text-center text-xs uppercase tracking-[0.24em] text-[#d8c29c]">
+          Career Direction
+        </p>
+        <h2 className="mt-2 text-center text-2xl font-semibold text-[#f8f4ee]">
+          How the work has matured
+        </h2>
+
+        <div className="mt-10 grid gap-4 lg:grid-cols-4">
+          {milestones.map((item, index) => (
+            <div
+              key={item.year}
+              className="tl-item rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-5 opacity-0"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="text-sm font-semibold text-[#d8c29c]">{item.year}</div>
+              <div className="mt-3 text-lg font-semibold text-[#f8f4ee]">{item.title}</div>
+              <p className="mt-3 text-sm leading-7 text-slate-300">{item.desc}</p>
             </div>
-          );
-        })}
-        {/* INNER GLOW */}
-        <div className="absolute inset-[calc(var(--r)*0.4)] rounded-full bg-cyan-400/5 blur-2xl pointer-events-none" />
+          ))}
+        </div>
       </div>
+
       <style>{`
-      /* =============================
-            RESPONSIVE RADIUS
-      ============================== */
-      .radial-container {
-        --r: 100px;
-        --mw: 6rem;
-        width: calc(var(--r) * 2 + var(--mw));
-        height: calc(var(--r) * 2 + var(--mw));
-      }
-      .radial-ring {
-        width: calc(var(--r) * 2);
-        height: calc(var(--r) * 2);
-      }
-      @media (min-width: 640px) {
-        .radial-container { 
-          --r: 135px; 
-          --mw: 8rem;
+        .tl-hidden {
+          opacity: 0;
         }
-      }
-      @media (min-width: 768px) {
-        .radial-container { --r: 170px; }
-      }
-      /* =============================
-            CONNECTOR LINES
-      ============================== */
-      .connector {
-        width: calc(var(--r) * 0.9);
-        height: 1px;
-        background: linear-gradient(
-          to right,
-          rgba(0,255,255,0.0),
-          rgba(0,255,255,0.6)
-        );
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: rotate(var(--angle));
-        box-shadow: 0 0 12px rgba(0,255,255,0.3);
-      }
-      /* =============================
-            MILESTONE POSITION
-      ============================== */
-      .milestone {
-        transform: var(--pos-transform);
-      }
-      /* =============================
-            ORBIT ANIMATION
-      ============================== */
-      .orbit-dot {
-        animation: orbit 10s linear infinite;
-        transform-origin: center;
-      }
-      @keyframes orbit {
-        0% { transform: rotate(0deg) translateX(var(--r)) rotate(0deg); }
-        100% { transform: rotate(360deg) translateX(var(--r)) rotate(-360deg); }
-      }
-     /* =============================
-            TIMELINE REVEAL
-      ============================== */
-      .tl-hidden { opacity: 0; }
-      .tl-visible { opacity: 1; transition: opacity 1s ease; }
-      .tl-scale {
-        transform: scale(0.7);
-        transition: transform 1s ease;
-      }
-      .tl-visible .tl-scale {
-        transform: scale(1);
-      }
-      /* Milestone fade-in stagger */
-      .tl-visible .tl-item {
-        animation: riseFade 1s ease forwards;
-      }
-      .tl-visible > div:nth-child(3) .tl-item { animation-delay: 0.2s; }
-      .tl-visible > div:nth-child(4) .tl-item { animation-delay: 0.4s; }
-      .tl-visible > div:nth-child(5) .tl-item { animation-delay: 0.6s; }
-      .tl-visible > div:nth-child(6) .tl-item { animation-delay: 0.8s; }
-      @keyframes riseFade {
-        0% { 
-          opacity: 0; 
-          transform: var(--pos-transform) scale(0.8); 
+
+        .tl-visible {
+          opacity: 1;
+          transition: opacity 0.8s ease;
         }
-        100% { 
-          opacity: 1; 
-          transform: var(--pos-transform); 
+
+        .tl-visible .tl-item {
+          animation: riseFade 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
-      }
-      /* Extra glow */
-      @keyframes dotPulse {
-        0%, 100% { transform: scale(1); opacity: 0.8; }
-        50% { transform: scale(1.4); opacity: 1; }
-      }
-      @keyframes pulseGlow {
-        0%, 100% { box-shadow: 0 0 20px rgba(0,255,255,0.25); }
-        50% { box-shadow: 0 0 40px rgba(0,255,255,0.45); }
-      }
+
+        @keyframes riseFade {
+          from {
+            opacity: 0;
+            transform: translateY(18px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
       `}</style>
     </section>
   );

@@ -1,83 +1,114 @@
+import Experience from "../components/Experience.jsx";
 import RadialTimeline from "../components/RadialTimeline.jsx";
+
+const strengths = [
+  "Designing workflow-heavy applications with clear operational logic and strong validation paths",
+  "Building with ASP.NET Core, SQL Server, Entity Framework, React, and production constraints in mind",
+  "Translating manual, document-heavy processes into reliable internal software",
+  "Balancing backend depth, usability, and deployment responsibility in the same role",
+];
+
+const profilePoints = [
+  "IT graduate working as an Application Developer at Saint George University of Beirut",
+  "Experience across enterprise platforms, internal tools, Red Cross delivery, and applied AI projects",
+  "Focused on maintainability, operational clarity, and production reliability",
+];
 
 export default function About() {
   return (
-    <section className="space-y-20 relative z-10">
-
-      {/* HEADER */}
-      <header className="pt-4">
-        <h1 className="text-3xl font-semibold text-white mb-2">About Me</h1>
-        <p className="text-sm text-slate-400">
-          A look into my background, journey, and the work that drives me.
+    <section className="relative z-10 space-y-12">
+      <header className="max-w-5xl space-y-3 pt-4">
+        <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+          About
+        </p>
+        <h1 className="text-3xl font-semibold text-slate-950 sm:text-4xl">
+          Application Developer building dependable systems with real operational value
+        </h1>
+        <p className="text-sm leading-7 text-slate-600 sm:text-base">
+          My work is centered on software that people actually depend on:
+          admissions workflows, internal review systems, public platforms,
+          operational tools, and side projects where automation or AI can bring
+          real value.
         </p>
       </header>
 
-      {/* MAIN GRID */}
-     <div className="space-y-5 text-sm text-slate-200 leading-relaxed">
-  <p>
-    I’m an IT Application Developer at{" "}
-    <span className="text-sky-300 font-medium">
-      Saint George University of Beirut (SGUB)
-    </span>
-    , where I design and deliver production-grade platforms that support the
-    university’s digital transformation. My work focuses on building secure,
-    scalable systems that streamline admissions and academic workflows end-to-end
-    — from applicant-facing portals to internal scoring, evaluation, and decision
-    dashboards.
-  </p>
+      <div className="grid gap-8 xl:grid-cols-[1.4fr,1fr]">
+        <div className="rounded-[1.9rem] border border-[#201a16]/10 bg-white/80 p-6 shadow-[0_18px_42px_rgba(15,23,42,0.05)] sm:p-7">
+          <div className="space-y-5 text-sm leading-7 text-slate-600">
+            <p>
+              I am an IT Application Developer at{" "}
+              <span className="font-medium text-[#215f5b]">
+                Saint George University of Beirut
+              </span>
+              , where I design, implement, and maintain software that supports
+              admissions and academic operations. My day-to-day work spans
+              applicant-facing flows, evaluator workflows, backend services,
+              internal dashboards, and the business logic that keeps those
+              systems stable in production.
+            </p>
 
-  <p>
-    On the engineering side, I work across the full stack. I build ASP.NET Core
-    applications and APIs, implement role-based access control, and integrate
-    database-heavy business logic using SQL Server, Entity Framework, and stored
-    procedures. Many of the systems I maintain involve complex rules and
-    high-stakes data integrity (status transitions, scoring logic, audit-safe
-    operations), so I prioritize clean architecture, clear validation flows, and
-    predictable behavior under real usage.
-  </p>
+            <p>
+              A large part of my work sits in workflow-intensive application
+              development. I build with ASP.NET Core, SQL Server, Entity
+              Framework, JavaScript, and React in environments where form
+              logic, document handling, access control, encrypted identifiers,
+              and review states all have to work reliably together.
+            </p>
 
-  <p>
-    A major part of my day-to-day is building workflow automation around
-    documents and application steps: multi-stage forms, autosave drafts, dynamic
-    validations, uploads, and administrative tools to review, score, and track
-    candidates efficiently. I’ve also deployed and supported production
-    environments (including IIS and cloud storage setups) and handled practical
-    issues that appear only at scale — permissions, environment differences,
-    and reliability across deployments.
-  </p>
+            <p>
+              I also care about delivery, not only implementation. Hosting,
+              deployment, permissions, issue resolution, and post-launch
+              reliability are part of the responsibility. That has made my
+              approach more practical: features matter, but maintainability and
+              operational clarity matter just as much.
+            </p>
 
-  <p>
-    Beyond enterprise systems, I enjoy building tools that solve real operational
-    problems. That includes internal platforms for structured evaluation and
-    coordination (like presentation evaluation and topic assignment systems),
-    as well as side projects that sharpen my engineering range across Node.js,
-    MongoDB, and modern front-end patterns.
-  </p>
+            <p>
+              Beyond SGUB, I have delivered work for Lebanese Red Cross
+              projects, commercial platforms, automation products, and applied
+              AI efforts in areas such as trading systems and medical imaging.
+              Across all of them, the pattern is consistent: I do best on work
+              that has structure, users, and meaningful operational use.
+            </p>
+          </div>
+        </div>
 
-  <p>
-    I also explore applied machine learning, especially where engineering and
-    decision support intersect. My projects include algorithmic trading
-    experimentation (feature engineering, model training, risk controls, and
-    dashboarding) and medical imaging classification work focused on practical
-    deployment contexts like telehealth. I’m particularly interested in building
-    AI systems that are understandable, testable, and useful in real workflows
-    — not just in notebooks.
-  </p>
+        <div className="space-y-6">
+          <aside className="rounded-[1.9rem] border border-[#201a16]/10 bg-[#111827] p-6 sm:p-7">
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+              Professional Profile
+            </p>
+            <div className="mt-5 space-y-3">
+              {profilePoints.map((item) => (
+                <div key={item} className="flex gap-3 text-sm leading-7 text-slate-300">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-[#d8c29c]" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </aside>
 
-  <p>
-    Overall, I care about building software that teams can trust: maintainable
-    codebases, efficient database design, clear UX, and tooling that reduces
-    friction for users. Whether I’m working on admissions platforms, evaluation
-    systems, or AI-assisted utilities, the goal is the same — ship reliable
-    systems that make processes faster, cleaner, and easier to operate.
-  </p>
-</div>
-
-      {/* TIMELINE – NOW WITH PROPER SPACING */}
-      <div className="flex justify-center mt-20 sm:mt-24">
-        <RadialTimeline />
+          <aside className="rounded-[1.9rem] border border-[#201a16]/10 bg-white/80 p-6 shadow-[0_18px_42px_rgba(15,23,42,0.05)] sm:p-7">
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+              Core Strengths
+            </p>
+            <div className="mt-5 space-y-3">
+              {strengths.map((item) => (
+                <div key={item} className="flex gap-3 text-sm leading-7 text-slate-600">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-[#215f5b]" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </aside>
+        </div>
       </div>
 
+      <Experience />
+
+      <div className="flex justify-center">
+        <RadialTimeline />
+      </div>
     </section>
   );
 }

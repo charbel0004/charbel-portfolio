@@ -1,102 +1,11 @@
-import { useEffect, useRef } from "react";
-
 export default function CircuitBackground() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-
-    const img = new Image();
-    img.src = import.meta.env.BASE_URL + "bg-circuit.png";
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", resize);
-    resize();
-
-    let time = 0;
-
-    img.onload = () => {
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // ---- FIXED RESPONSIVE BACKGROUND ----
-        ctx.globalAlpha = 0.25;
-
-        const imgRatio = img.width / img.height;
-        const canvasRatio = canvas.width / canvas.height;
-
-        let drawWidth, drawHeight, drawX, drawY;
-
-        if (canvasRatio > imgRatio) {
-          drawWidth = canvas.width;
-          drawHeight = canvas.width / imgRatio;
-          drawX = 0;
-          drawY = (canvas.height - drawHeight) / 2;
-        } else {
-          drawHeight = canvas.height;
-          drawWidth = canvas.height * imgRatio;
-          drawX = (canvas.width - drawWidth) / 2;
-          drawY = 0;
-        }
-
-        ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
-
-        // CPU pulse
-        const pulse = Math.sin(time / 20) * 20 + 40;
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
-
-        ctx.globalAlpha = 0.20;
-        ctx.beginPath();
-        ctx.arc(cx, cy, pulse, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0,180,255,0.45)";
-        ctx.filter = "blur(65px)";
-        ctx.fill();
-        ctx.filter = "none";
-
-        // line glow animation
-        ctx.globalAlpha = 0.25;
-        ctx.globalCompositeOperation = "lighter";
-        ctx.filter = "blur(2px)";
-
-        const offset = (time % canvas.width) * 1.5;
-
-        const gradient = ctx.createLinearGradient(offset, 0, offset + 200, 0);
-        gradient.addColorStop(0, "rgba(0,255,255,0)");
-        gradient.addColorStop(0.5, "rgba(0,255,255,0.5)");
-        gradient.addColorStop(1, "rgba(0,255,255,0)");
-
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.filter = "none";
-        ctx.globalCompositeOperation = "source-over";
-
-        time += 1.5;
-        requestAnimationFrame(animate);
-      }
-
-      animate();
-    };
-
-    return () => window.removeEventListener("resize", resize);
-  }, []);
-
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: "absolute",
-        inset: 0,
-        zIndex: -30,
-        width: "100%",
-        height: "100%",
-        pointerEvents: "none",
-      }}
-    />
+    <div className="pointer-events-none absolute inset-0 -z-30 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(177,138,81,0.16),transparent_24%),radial-gradient(circle_at_78%_10%,rgba(33,95,91,0.16),transparent_18%),linear-gradient(180deg,#f4efe7_0%,#f7f3ec_30%,#f2ede4_100%)]" />
+      <div className="absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-[#215f5b]/10 blur-3xl" />
+      <div className="absolute right-[-5rem] top-[-2rem] h-80 w-80 rounded-full bg-[#b18a51]/12 blur-3xl" />
+      <div className="absolute bottom-[-6rem] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#111827]/[0.05] blur-3xl" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#b18a51]/30 to-transparent" />
+    </div>
   );
 }

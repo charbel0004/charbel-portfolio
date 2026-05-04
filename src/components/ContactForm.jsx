@@ -34,12 +34,11 @@ export default function ContactForm() {
     <form
       ref={formRef}
       onSubmit={sendEmail}
-      className="space-y-6 max-w-xl w-full"
+      className="w-full max-w-xl space-y-6"
     >
-      {/* Row 1: Name + Email */}
-      <div className="grid sm:grid-cols-2 gap-6">
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label className="block text-sm font-semibold text-slate-200 mb-1.5">
+          <label className="mb-1.5 block text-sm font-semibold text-slate-800">
             Name
           </label>
           <input
@@ -47,13 +46,12 @@ export default function ContactForm() {
             name="user_name"
             required
             placeholder="John Doe"
-            className="w-full rounded-xl bg-slate-900/70 border border-slate-700 px-4 py-2.5 text-white text-sm 
-                       placeholder-slate-500 transition focus:border-blue-400 focus:ring-2 focus:ring-blue-500/40 focus:outline-none"
+            className="w-full rounded-xl border border-[#201a16]/10 bg-[#f8f4ee] px-4 py-3 text-sm text-slate-900 placeholder-slate-400 transition focus:border-[#215f5b] focus:outline-none focus:ring-2 focus:ring-[#215f5b]/15"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-slate-200 mb-1.5">
+          <label className="mb-1.5 block text-sm font-semibold text-slate-800">
             Email
           </label>
           <input
@@ -61,15 +59,13 @@ export default function ContactForm() {
             name="user_email"
             required
             placeholder="john@example.com"
-            className="w-full rounded-xl bg-slate-900/70 border border-slate-700 px-4 py-2.5 text-white text-sm 
-                       placeholder-slate-500 transition focus:border-blue-400 focus:ring-2 focus:ring-blue-500/40 focus:outline-none"
+            className="w-full rounded-xl border border-[#201a16]/10 bg-[#f8f4ee] px-4 py-3 text-sm text-slate-900 placeholder-slate-400 transition focus:border-[#215f5b] focus:outline-none focus:ring-2 focus:ring-[#215f5b]/15"
           />
         </div>
       </div>
 
-      {/* Message Input */}
       <div>
-        <label className="block text-sm font-semibold text-slate-200 mb-1.5">
+        <label className="mb-1.5 block text-sm font-semibold text-slate-800">
           Message
         </label>
         <textarea
@@ -77,34 +73,27 @@ export default function ContactForm() {
           required
           rows="6"
           placeholder="Write your message here..."
-          className="w-full rounded-xl bg-slate-900/70 border border-slate-700 px-4 py-3 text-white text-sm 
-                     placeholder-slate-500 resize-none transition 
-                     focus:border-blue-400 focus:ring-2 focus:ring-blue-500/40 focus:outline-none"
+          className="w-full resize-none rounded-xl border border-[#201a16]/10 bg-[#f8f4ee] px-4 py-3 text-sm text-slate-900 placeholder-slate-400 transition focus:border-[#215f5b] focus:outline-none focus:ring-2 focus:ring-[#215f5b]/15"
         />
       </div>
 
-      {/* Send Button */}
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 
-                   rounded-full bg-blue-600 hover:bg-blue-500 active:bg-blue-700 
-                   disabled:opacity-50 text-sm font-medium text-white 
-                   shadow-[0_0_20px_rgba(0,120,255,0.25)] transition-all duration-200"
+        className="inline-flex w-full items-center justify-center rounded-full bg-[#111827] px-6 py-3 text-sm font-medium text-[#f8f4ee] transition-all duration-200 hover:bg-[#1f2937] disabled:opacity-50 sm:w-auto"
       >
-        {status === "loading" ? "Sending…" : "Send Message"}
+        {status === "loading" ? "Sending..." : "Send Message"}
       </button>
 
-      {/* Status Messages */}
       {status === "success" && (
-        <p className="text-sm text-emerald-400 mt-1 animate-fadeIn">
-          ✓ Message sent successfully. I will get back to you shortly.
+        <p className="mt-1 text-sm text-emerald-600 animate-fadeIn">
+          Message sent successfully. I will get back to you shortly.
         </p>
       )}
 
       {status === "error" && (
-        <p className="text-sm text-red-400 mt-1 animate-fadeIn">
-          ⚠ Something went wrong. Please try again.
+        <p className="mt-1 text-sm text-red-600 animate-fadeIn">
+          Something went wrong. Please try again.
         </p>
       )}
     </form>
